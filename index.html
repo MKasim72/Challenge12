@@ -40,44 +40,17 @@
         <div class="box"></div>
     </div>
     <script>
-        let cont = document.querySelector(".container")
-        let box1 = cont.children[0]
-        let box2 = cont.children[1]
-        let box3 = cont.children[2]
-        let box4 = cont.children[3]
-        let box5 = cont.children[4]
-        
-        console.log(box1)
-
-        let randInt = Math.random()
-        
-        setInterval(()=>{
-            let randInt = Math.random()
-            if( randInt < 0.25) {
-                box1.style.backgroundColor = "blue"
-                box2.style.backgroundColor = "yellow"
-                box3.style.backgroundColor = "green"
-                box4.style.backgroundColor = "navy"
-                box5.style.backgroundColor = "neon"
-            } 
-            else if(randInt > 0.25 && randInt<0.75){
-                
-                box1.style.backgroundColor = "yellow"
-                box2.style.backgroundColor = "green"
-                box3.style.backgroundColor = "brown"
-                box4.style.backgroundColor = "red"
-                box5.style.backgroundColor = "pink"
-                
-            }
-            else{
-                
-                box1.style.backgroundColor = "red"
-                box2.style.backgroundColor = "pink"
-                box3.style.backgroundColor = "navy"
-                box4.style.backgroundColor = "gold"
-                box5.style.backgroundColor = "blue"
-            }
-            },500)
+        const generateRandom = () => {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            
+            return `rgb(${r},${g},${b})`
+        }
+        let boxes = document.querySelector(".container").children
+        setInterval(()=>Array.from(boxes).forEach(box=>{
+            box.style.background = generateRandom()
+        }),500)
         
     </script>
 </body>
